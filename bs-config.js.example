@@ -1,0 +1,15 @@
+const dotenv = require("dotenv").config();
+const { web } = require("webpack");
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require("webpack-hot-middleware");
+const webpackConfig = require('./webpack.config.js');
+const bundler = webpack(webpackConfig);
+
+module.exports = {
+	"files": process.env.PATH_DESTINATION + "/*",
+	"server": process.env.PATH_DESTINATION,
+	"port": 3000,
+	"open": false,
+	"notify": false
+};

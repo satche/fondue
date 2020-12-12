@@ -1,0 +1,30 @@
+{
+  "name": "fondue",
+  "version": "1.0.0",
+  "description": "Provides tools and utilities for front-end development",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm:dev\"",
+    "dev": "concurrently \"npm:server\" \"npm:gulp\" \"npm:webpack\"",
+    "server": "browser-sync start --config bs-config.js",
+    "gulp": "gulp",
+    "webpack": "webpack --mode=development --watch"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.12.10",
+    "babel-loader": "^8.2.2",
+    "browser-sync": "^2.26.13",
+    "concurrently": "^5.3.0",
+    "del": "^6.0.0",
+    "dotenv": "^8.2.0",
+    "gulp": "^4.0.2",
+    "webpack": "^5.10.0",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-middleware": "^4.0.2",
+    "webpack-hot-middleware": "^2.25.0"
+  },
+  "author": "Satche",
+  "license": "MIT"
+}
