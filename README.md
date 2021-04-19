@@ -4,26 +4,26 @@
 ![GitHub](https://img.shields.io/github/license/satche/fondue)
 
 
-# Getting started
+## Getting started
 
-## Installation
+### Installation
 1. `git clone https://github.com/satche/fondue.git`
 2. `npm install`
 
-## Configuration
+### Configuration
 Duplicate `.env.example` to `.env`, edit it at your will
 
-## Usage
-- `npm start` – Run the npm script
-  - `npm run gulp` – Run [gulp](#gulp)
-  - `npm run server` – Run [browser-sync](#bs)
-<!-- - `npm run webpack` – Launch webpack -->
+### Usage
+- `npm start` – Run the following npm scripts
+  - `npm run gulp` – Launch [gulp](#gulp)
+  - `npm run server` – Launch [browser-sync](#bs)
+  - `npm run webpack` – Launch webpack
 - `docker-compose up --build -d` – Run the [docker images](#docker)
 
 
-# Features
+## Features
 
-## <a name="docker"></a> [Docker](https://www.docker.com/)
+### <a name="docker"></a> [Docker](https://www.docker.com/)
 You can use Docker to launch npm scripts and a web server with database
 
 **Images**
@@ -33,16 +33,16 @@ You can use Docker to launch npm scripts and a web server with database
 - [phpmyadmin](https://hub.docker.com/r/phpmyadmin/phpmyadmin)
 - [node](https://hub.docker.com/_/node)
 
-## [Webpack](https://webpack.js.org/)
+### [Webpack](https://webpack.js.org/)
 Webpack configuration can be found in `webpack.config.js`
 
-## <a name="gulp"></a> [Gulp](https://gulpjs.com/)
+### <a name="gulp"></a> [Gulp](https://gulpjs.com/)
 Gulp tasks and configuration can be set through the `gulpfile.js` file.
 
 **Tasks**
 - HTML
 
-## <a name="bs"></a> [Browser-sync](https://www.browsersync.io/)
+### <a name="bs"></a> [Browser-sync](https://www.browsersync.io/)
 Provide features like browsers/devices synchronisation and auto-refreshing.
 - UI: [localhost:3001](http://localhost:3001)
 - Config file: duplicate `bs-config.js.example` to `bs-config.js`
@@ -53,9 +53,9 @@ proxy: "nginx:3000/",
 server: false
 ```
 
-## Other
+### Other
 - [.editorconfig](https://editorconfig.org/) – Helps maintain consistent coding styles
 
 
-# License
+## License
 This project is licensed under the terms of the MIT license. See the [LICENSE](LICENSE) file.
