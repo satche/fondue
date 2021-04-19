@@ -1,41 +1,94 @@
+/********************************
+ * Webpack config
+ ********************************/
+
+/* Import
+ ********************************/
+const webpack = require("webpack");
 const path = require("path");
 const dotenv = require("dotenv").config();
-const webpack = require("webpack");
+const copyPlugin = require("copy-webpack-plugin");
+const miniCssExtractPlugin = require("mini-css-extract-plugin");
+const cssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const isDevMode = process.env.NODE_ENV !== "production";
 
+/* Config
+ ********************************/
 module.exports = {
-	mode: "development",
+	mode: isDevMode ? "development" : "production",
+
 	entry: [
 		"@babel/polyfill",
-		path.resolve(__dirname, process.env.PATH_SOURCES, "index.js"),
+		path.resolve(process.env.PATH_SOURCES, "index.js"),
 	],
+
 	output: {
+		path: path.resolve(process.env.PATH_DESTINATION),
 		filename: "bundle.js",
-		path: path.resolve(__dirname, process.env.PATH_DESTINATION)
+		clean: true,
 	},
-	watch: false,
-	devtool: "eval-source-map",
+
+	watch: isDevMode,
+
+	devtool: isDevMode ? "cheap-source-map" : false,
+	stats: {
+		children: true, // for css imports
+	},
+
 	module: {
-		rules: [{
-			test: /\.m?js$/,
-			exclude: /(node_modules|bower_components)/,
-			use: {
-				loader: "babel-loader",
-				options: {
-					presets: ["@babel/preset-env"]
-				}
-			}
-		}]
+		rules: [
+			// Javascript
+			{
+				test: /\.m?js$/,
+				exclude: /(node_modules|bower_components)/,
+				use: {
+					loader: "babel-loader",
+					options: {
+						presets: ["@babel/preset-env"],
+					},
+				},
+			},
+
+			// CSS
+			{
+				test: /\.css$/,
+				use: [
+					miniCssExtractPlugin.loader,
+					{
+						loader: "css-loader",
+						options: {
+							url: false,
+							sourceMap: true,
+							importLoaders: 1,
+						},
+					},
+					"postcss-loader",
+				],
+			},
+		],
 	},
-	resolve: {
-		modules: [
-			path.resolve(process.env.PATH_SOURCES),
-			path.resolve("./node_modules")
-		]
-	},
+
 	plugins: [
-		new webpack.ProvidePlugin({
-			$: "jquery",
-			jQuery: "jquery"
+		// Copy files
+		new copyPlugin({
+			patterns: [
+				{
+					context: process.env.PATH_SOURCES,
+					from: "**/*",
+					globOptions: {
+						ignore: ["**/*.css", "**/*.js"],
+					},
+				},
+			],
 		}),
-	]
+
+		// CSS Extract
+		new miniCssExtractPlugin({
+			filename: "bundle.css",
+		}),
+	],
+
+	optimization: {
+		minimizer: [new cssMinimizerPlugin()],
+	},
 };
