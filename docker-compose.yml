@@ -34,7 +34,7 @@ services:
         ports:
             - ${MYSQL_PORT}:3306
         environment:
-            - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+            - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
             - MYSQL_DATABASE=${DB_NAME}
         volumes:
             - ./.docker/mysql/databases:/docker-entrypoint-initdb.d
@@ -45,7 +45,7 @@ services:
         ports:
             - ${PHPMYADMIN_PORT}:80
         environment:
-            - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+            - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
             - PMA_HOST=mysql
 
     node:
