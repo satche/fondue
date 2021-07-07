@@ -6,7 +6,7 @@
 
 ## What is it ?
 
-Fondue provides tools to help developere quickly create front-end projects.
+Fondue provides tools to help developers quickly create front-end projects.
 
 ## Getting started
 
