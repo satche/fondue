@@ -1,19 +1,25 @@
 # Fondue
 
-**Fondue provides tools and utilities for front-end development**
+**Front-end Development Utilities and Environement**
 
 ![GitHub](https://img.shields.io/github/license/satche/fondue)
+
+## What is it ?
+
+Fondue provides tools to help developere quickly create front-end projects.
 
 ## Getting started
 
 ### Installation
 
-1. `git clone https://github.com/satche/fondue.git`
-2. `npm install`
+```shell
+$ git clone https://github.com/satche/fondue.git
+$ npm install
+```
 
 ### Configuration
 
-Duplicate `.env.example` to `.env`, edit it at your will
+Duplicate `.env.example` and `bs-config.js.example` files and edit them to fit your needs.
 
 ### Usage
 
@@ -59,6 +65,10 @@ server: false
 
 -  [.editorconfig](https://editorconfig.org/) – Helps maintain consistent coding styles
 
-## License
+## About
 
-This project is licensed under the terms of the MIT license. See the [LICENSE](LICENSE) file.
+### [License](LICENSE)
+
+This project is licensed under the terms of [MIT license](https://choosealicense.com/licenses/mit/).
+
+### Author
